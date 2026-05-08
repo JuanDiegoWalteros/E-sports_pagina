@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111111" />
+
+  <title>E-Sports Academy — Entrena, Compite, Domina</title>
+  <meta name="description" content="Aprende e-sports competitivos con instructores profesionales. Cursos de LoL, Valorant, CS2 y más." />
+  <meta name="keywords" content="e-sports, videojuegos competitivos, cursos gaming, entrenamiento esports" />
+  <meta property="og:title" content="E-Sports Academy" />
+  <meta property="og:description" content="Domina el juego. Entra al nivel pro." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237A0C0C'/%3E%3Cpath d='M16 22h32v6H30v8h14v6H30v0H16z' fill='%2300FF9F'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+</head>
+<body>
+
+  <!-- =================== 5.1 NAVBAR =================== -->
+  <nav class="navbar" id="navbar" aria-label="Navegacion principal">
+    <div class="container nav-inner">
+      <a href="#inicio" class="nav-logo" aria-label="E-Sports Academy inicio">
+        <span class="bolt" aria-hidden="true">⚡</span>
+        <span>E-SPORTS <em>ACADEMY</em></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#que-son">Qué son</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#instructores">Instructores</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="btn btn-secondary btn-sm">INSCRÍBETE</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- =================== 5.2 HERO =================== -->
+    <section id="inicio" class="hero">
+      <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">// E-SPORTS ACADEMY</p>
+        <h1 class="hero-title">
+          <span class="typewriter" data-text="DOMINA EL JUEGO."></span><br />
+          <span class="hero-title-accent">ENTRA AL NIVEL PRO.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Aprende e-sports competitivos desde cero con entrenadores profesionales.
+        </p>
+        <div class="hero-cta">
+          <a href="#cursos" class="btn btn-primary">VER CURSOS</a>
+          <button type="button" class="btn btn-secondary" id="heroChatBtn">HABLA CON EL CHATBOT</button>
+        </div>
+        <div class="hero-meta">
+          <span><strong>+1200</strong> Estudiantes</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span><strong>+30</strong> Cursos</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span><strong>+15</strong> Torneos</span>
+        </div>
+      </div>
+      <a href="#que-son" class="hero-scroll" aria-label="Bajar a la siguiente seccion">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- =================== 5.3 QUE SON LOS E-SPORTS =================== -->
+    <section id="que-son" class="section section-dark">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">01 / Introducción</p>
+          <h2 class="section-title">¿Qué son los e-sports?</h2>
+          <p class="section-lead">
+            Los e-sports son competencias profesionales de videojuegos donde equipos y jugadores
+            disputan torneos por reconocimiento, premios millonarios y la gloria de ser los mejores.
+          </p>
+        </header>
+
+        <div class="grid grid-3 cards-row">
+          <article class="card card-glow reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 10h12M6 14h12M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
+            </div>
+            <h3>Competencia organizada</h3>
+            <p>Reglas claras, ligas oficiales y equipos profesionales con staff completo.</p>
+          </article>
+
+          <article class="card card-glow reveal" style="--reveal-delay:.08s">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3h8v3a4 4 0 0 1-4 4 4 4 0 0 1-4-4Zm-3 1h3M16 4h3M9 14h6v3H9zM8 21h8"/></svg>
+            </div>
+            <h3>Torneos internacionales</h3>
+            <p>Eventos transmitidos en vivo a millones de fans alrededor del mundo.</p>
+          </article>
+
+          <article class="card card-glow reveal" style="--reveal-delay:.16s">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M7 7h7a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h8"/></svg>
+            </div>
+            <h3>Industria millonaria</h3>
+            <p>Patrocinios, derechos de transmisión y un público global que crece año tras año.</p>
+          </article>
+        </div>
+
+        <div class="stat-banner reveal">
+          <span class="stat-number" data-count="1.8">$0</span>
+          <span class="stat-suffix">mil millones</span>
+          <span class="stat-label">en premios distribuidos durante 2023</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.4 HISTORIA =================== -->
+    <section id="historia" class="section section-darker">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">02 / Historia</p>
+          <h2 class="section-title">Hitos de los e-sports</h2>
+          <p class="section-lead">De un pequeño torneo universitario a los Juegos Olímpicos.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <span class="timeline-year">1972</span>
+            <div class="timeline-card">
+              <h3>Primer torneo universitario</h3>
+              <p>Stanford organiza una competencia de Spacewar! con 24 jugadores. Nace el concepto.</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">1997</span>
+            <div class="timeline-card">
+              <h3>Red Annihilation (Quake)</h3>
+              <p>Primer torneo masivo en EE. UU. El ganador se lleva el Ferrari 328 GTS de John Carmack.</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">2000</span>
+            <div class="timeline-card">
+              <h3>Corea adopta StarCraft</h3>
+              <p>Canales de TV nacionales transmiten partidas y se profesionaliza la escena.</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">2011</span>
+            <div class="timeline-card">
+              <h3>Worlds de League of Legends</h3>
+              <p>Riot lanza el primer Mundial. La industria explota a escala global.</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">2019</span>
+            <div class="timeline-card">
+              <h3>Juegos del Sudeste Asiático</h3>
+              <p>Los e-sports debutan como deporte oficial con medallas en juego.</p>
+            </div>
+          </li>
+          <li class="timeline-item reveal">
+            <span class="timeline-year">2024</span>
+            <div class="timeline-card">
+              <h3>Juegos Olímpicos de París</h3>
+              <p>Demostración oficial de e-sports en el ciclo olímpico. La consolidación.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =================== 5.5 COMO EMPEZAR =================== -->
+    <section id="como-empezar" class="section section-dark">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">03 / Inicio</p>
+          <h2 class="section-title">Cómo empezar</h2>
+          <p class="section-lead">Cuatro pasos sencillos para pasar de jugador casual a competidor.</p>
+        </header>
+
+        <div class="grid grid-4 steps">
+          <article class="step reveal">
+            <span class="step-number">01</span>
+            <h3>Elige tu juego</h3>
+            <p>Identifica el título donde más disfrutas y tienes mayor potencial.</p>
+          </article>
+          <article class="step reveal" style="--reveal-delay:.08s">
+            <span class="step-number">02</span>
+            <h3>Conoce el meta</h3>
+            <p>Estudia personajes, mapas, parches y estrategias que dominan la liga.</p>
+          </article>
+          <article class="step reveal" style="--reveal-delay:.16s">
+            <span class="step-number">03</span>
+            <h3>Practica con disciplina</h3>
+            <p>Rutinas consistentes, VOD review y feedback son tu mejor inversión.</p>
+          </article>
+          <article class="step reveal" style="--reveal-delay:.24s">
+            <span class="step-number">04</span>
+            <h3>Únete a torneos</h3>
+            <p>De ladders y locales a la liga regional. Compite tan pronto como puedas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.6 CURSOS =================== -->
+    <section id="cursos" class="section section-darker">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">04 / Cursos</p>
+          <h2 class="section-title">Cursos disponibles</h2>
+          <p class="section-lead">Programas diseñados por entrenadores con experiencia en escenarios profesionales.</p>
+        </header>
+
+        <div class="grid grid-4 courses">
+          <article class="course-card card reveal">
+            <div class="course-cover" data-game="lol-valorant" aria-hidden="true"></div>
+            <div class="course-body">
+              <span class="badge badge-basic">BÁSICO</span>
+              <h3>Fundamentos Competitivos</h3>
+              <p class="course-meta"><strong>Juegos:</strong> LoL, Valorant</p>
+              <p class="course-meta"><strong>Duración:</strong> 4 semanas</p>
+              <a href="#contacto" class="btn btn-secondary btn-sm">VER CURSO</a>
+            </div>
+          </article>
+
+          <article class="course-card card reveal" style="--reveal-delay:.08s">
+            <div class="course-cover" data-game="cs2-dota" aria-hidden="true"></div>
+            <div class="course-body">
+              <span class="badge badge-mid">INTERMEDIO</span>
+              <h3>Estrategia y Meta</h3>
+              <p class="course-meta"><strong>Juegos:</strong> CS2, Dota 2</p>
+              <p class="course-meta"><strong>Duración:</strong> 6 semanas</p>
+              <a href="#contacto" class="btn btn-secondary btn-sm">VER CURSO</a>
+            </div>
+          </article>
+
+          <article class="course-card card reveal" style="--reveal-delay:.16s">
+            <div class="course-cover" data-game="mind" aria-hidden="true"></div>
+            <div class="course-body">
+              <span class="badge badge-mid">INTERMEDIO</span>
+              <h3>Psicología del Jugador</h3>
+              <p class="course-meta"><strong>Juegos:</strong> Cualquiera</p>
+              <p class="course-meta"><strong>Duración:</strong> 3 semanas</p>
+              <a href="#contacto" class="btn btn-secondary btn-sm">VER CURSO</a>
+            </div>
+          </article>
+
+          <article class="course-card card reveal" style="--reveal-delay:.24s">
+            <div class="course-cover" data-game="pro" aria-hidden="true"></div>
+            <div class="course-body">
+              <span class="badge badge-adv">AVANZADO</span>
+              <h3>Alto Rendimiento Pro</h3>
+              <p class="course-meta"><strong>Juegos:</strong> LoL, Valorant, CS2</p>
+              <p class="course-meta"><strong>Duración:</strong> 8 semanas</p>
+              <a href="#contacto" class="btn btn-secondary btn-sm">VER CURSO</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.7 ROLES =================== -->
+    <section id="roles" class="section section-dark">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">05 / Roles</p>
+          <h2 class="section-title">Roles en los e-sports</h2>
+          <p class="section-lead">Detrás de cada equipo profesional hay un ecosistema completo. Encuentra tu lugar.</p>
+        </header>
+
+        <div class="grid grid-3 roles">
+          <article class="role-card reveal" tabindex="0">
+            <div class="role-inner">
+              <div class="role-front">
+                <span class="role-icon" aria-hidden="true">🎮</span>
+                <h3>Jugador profesional</h3>
+              </div>
+              <div class="role-back">
+                <p>El atleta. Compite a nivel profesional y representa a su equipo en torneos.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-card reveal" tabindex="0" style="--reveal-delay:.06s">
+            <div class="role-inner">
+              <div class="role-front">
+                <span class="role-icon" aria-hidden="true">🧠</span>
+                <h3>Coach / Entrenador</h3>
+              </div>
+              <div class="role-back">
+                <p>Diseña estrategias, lidera la preparación y desarrolla el talento del equipo.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-card reveal" tabindex="0" style="--reveal-delay:.12s">
+            <div class="role-inner">
+              <div class="role-front">
+                <span class="role-icon" aria-hidden="true">📊</span>
+                <h3>Analista</h3>
+              </div>
+              <div class="role-back">
+                <p>Estudia el meta, partidas pasadas y rivales. Aporta datos para la toma de decisiones.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-card reveal" tabindex="0" style="--reveal-delay:.18s">
+            <div class="role-inner">
+              <div class="role-front">
+                <span class="role-icon" aria-hidden="true">🎙️</span>
+                <h3>Caster / Comentarista</h3>
+              </div>
+              <div class="role-back">
+                <p>Narra la acción en vivo, conecta con la audiencia y eleva el espectáculo.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-card reveal" tabindex="0" style="--reveal-delay:.24s">
+            <div class="role-inner">
+              <div class="role-front">
+                <span class="role-icon" aria-hidden="true">🖥️</span>
+                <h3>Manager</h3>
+              </div>
+              <div class="role-back">
+                <p>Coordina logística, contratos, viajes y la operación del equipo.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-card reveal" tabindex="0" style="--reveal-delay:.30s">
+            <div class="role-inner">
+              <div class="role-front">
+                <span class="role-icon" aria-hidden="true">🎬</span>
+                <h3>Content Creator</h3>
+              </div>
+              <div class="role-back">
+                <p>Construye comunidad mediante streaming y redes. Marca personal y entretenimiento.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.8 ENTRENAMIENTO =================== -->
+    <section id="entrenamiento" class="section section-darker">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">06 / Entrenamiento</p>
+          <h2 class="section-title">Entrenamiento competitivo</h2>
+          <p class="section-lead">No basta con jugar más. Entrenamos como atletas: cuerpo, mente y mecánica.</p>
+        </header>
+
+        <div class="training-grid">
+          <ul class="training-list reveal">
+            <li>
+              <span class="training-icon" aria-hidden="true">▶</span>
+              <div><strong>VOD Review</strong>Análisis frame a frame de tus partidas y de los pros.</div>
+            </li>
+            <li>
+              <span class="training-icon" aria-hidden="true">▶</span>
+              <div><strong>Scrim Partners</strong>Práctica organizada en equipo contra rivales del mismo nivel.</div>
+            </li>
+            <li>
+              <span class="training-icon" aria-hidden="true">▶</span>
+              <div><strong>Mental coaching</strong>Manejo del tilt, foco, comunicación y trabajo en equipo.</div>
+            </li>
+            <li>
+              <span class="training-icon" aria-hidden="true">▶</span>
+              <div><strong>Rutinas físicas</strong>Ergonomía, descanso, sueño y prevención de lesiones.</div>
+            </li>
+          </ul>
+
+          <div class="skills reveal">
+            <div class="skill">
+              <div class="skill-head"><span>Puntería</span><span data-skill="92">0%</span></div>
+              <div class="skill-bar"><span class="skill-fill" data-fill="92"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-head"><span>Comunicación</span><span data-skill="85">0%</span></div>
+              <div class="skill-bar"><span class="skill-fill" data-fill="85"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-head"><span>Toma de decisión</span><span data-skill="78">0%</span></div>
+              <div class="skill-bar"><span class="skill-fill" data-fill="78"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-head"><span>Mentalidad</span><span data-skill="88">0%</span></div>
+              <div class="skill-bar"><span class="skill-fill" data-fill="88"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="quote reveal">
+          <p>"El talento te abre la puerta. La disciplina te mantiene en el nivel pro."</p>
+          <cite>— Coach Kael, head coach E-Sports Academy</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- =================== 5.9 TORNEOS =================== -->
+    <section id="torneos" class="section section-dark">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">07 / Torneos</p>
+          <h2 class="section-title">Torneos y competencias</h2>
+          <p class="section-lead">De ladders semanales a campeonatos internacionales. Tu camino, tus tiempos.</p>
+        </header>
+
+        <div class="table-wrap reveal">
+          <table class="tournaments">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Juego</th>
+                <th>Premio</th>
+                <th>Fechas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag">Local</span></td>
+                <td>Valorant</td>
+                <td><strong class="prize" data-count="500">$0</strong></td>
+                <td>Mensual</td>
+              </tr>
+              <tr>
+                <td><span class="tag">Regional</span></td>
+                <td>League of Legends</td>
+                <td><strong class="prize" data-count="15000">$0</strong></td>
+                <td>Trimestral</td>
+              </tr>
+              <tr>
+                <td><span class="tag">Regional</span></td>
+                <td>CS2</td>
+                <td><strong class="prize" data-count="20000">$0</strong></td>
+                <td>Semestral</td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-hot">Internacional</span></td>
+                <td>Multijuego</td>
+                <td><strong class="prize" data-count="250000">$0</strong></td>
+                <td>Anual</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cta-banner reveal">
+          <p>¿Quieres participar?</p>
+          <a href="#contacto" class="btn btn-primary">CONTÁCTANOS</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.10 INSTRUCTORES =================== -->
+    <section id="instructores" class="section section-darker">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">08 / Instructores</p>
+          <h2 class="section-title">Conoce a tus entrenadores</h2>
+          <p class="section-lead">Veteranos del circuito profesional listos para guiarte.</p>
+        </header>
+
+        <div class="grid grid-4 instructors">
+          <article class="instructor reveal">
+            <div class="hex">
+              <div class="hex-inner" data-initials="KA"></div>
+            </div>
+            <h3>Kael "Apex" Romero</h3>
+            <p class="role-tag">Coach principal — Valorant</p>
+            <p class="bio">Top 50 ranked NA. 5 años entrenando equipos profesionales.</p>
+            <div class="socials">
+              <a href="#" aria-label="Twitch de Apex">Twitch</a>
+              <a href="#" aria-label="Twitter de Apex">X</a>
+            </div>
+          </article>
+
+          <article class="instructor reveal" style="--reveal-delay:.08s">
+            <div class="hex">
+              <div class="hex-inner" data-initials="LV"></div>
+            </div>
+            <h3>Lía "Vox" Mendoza</h3>
+            <p class="role-tag">Caster & analista — LoL</p>
+            <p class="bio">Casteo en LLA y EU Masters. Análisis de meta semanal.</p>
+            <div class="socials">
+              <a href="#" aria-label="Twitch de Vox">Twitch</a>
+              <a href="#" aria-label="Twitter de Vox">X</a>
+            </div>
+          </article>
+
+          <article class="instructor reveal" style="--reveal-delay:.16s">
+            <div class="hex">
+              <div class="hex-inner" data-initials="MR"></div>
+            </div>
+            <h3>Mateo "Riser" Castro</h3>
+            <p class="role-tag">Coach — CS2</p>
+            <p class="bio">Ex jugador de tier-2 en Sudamérica. Especialista en lectura de rondas.</p>
+            <div class="socials">
+              <a href="#" aria-label="Twitch de Riser">Twitch</a>
+              <a href="#" aria-label="Twitter de Riser">X</a>
+            </div>
+          </article>
+
+          <article class="instructor reveal" style="--reveal-delay:.24s">
+            <div class="hex">
+              <div class="hex-inner" data-initials="SN"></div>
+            </div>
+            <h3>Sara "Nyx" Quintero</h3>
+            <p class="role-tag">Mental coach</p>
+            <p class="bio">Psicóloga deportiva. Trabaja foco, manejo del tilt y dinámica de equipo.</p>
+            <div class="socials">
+              <a href="#" aria-label="Twitch de Nyx">Twitch</a>
+              <a href="#" aria-label="Twitter de Nyx">X</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.11 SOBRE NOSOTROS =================== -->
+    <section id="sobre-nosotros" class="section section-dark">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p class="section-eyebrow">09 / Sobre nosotros</p>
+            <h2 class="section-title">Una academia, una comunidad</h2>
+            <p>
+              E-Sports Academy nació en 2021 con una idea simple: entrenar gamers como
+              atletas profesionales. Hoy formamos jugadores, entrenadores, casters y
+              creadores de contenido en Latinoamérica y más allá.
+            </p>
+            <p>
+              <strong>Misión:</strong> democratizar el acceso al alto rendimiento en e-sports.<br />
+              <strong>Visión:</strong> ser la cantera de talento competitivo más respetada de la región.
+            </p>
+            <div class="partners" aria-label="Partners y medios">
+              <span class="partner-chip">PixelMedia</span>
+              <span class="partner-chip">GG Gear</span>
+              <span class="partner-chip">RedZone</span>
+              <span class="partner-chip">CastTV</span>
+            </div>
+          </div>
+          <div class="about-stats reveal">
+            <div class="stat">
+              <span class="stat-num" data-count="1200">0</span>
+              <span class="stat-cap">Estudiantes</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-count="30">0</span>
+              <span class="stat-cap">Cursos activos</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-count="15">0</span>
+              <span class="stat-cap">Torneos organizados</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-count="48">0</span>
+              <span class="stat-cap">Coaches certificados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== 5.12 CONTACTO =================== -->
+    <section id="contacto" class="section section-contact">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">10 / Contacto</p>
+          <h2 class="section-title">Listo para subir de nivel</h2>
+          <p class="section-lead">Cuéntanos en qué juego quieres competir y te contactamos en menos de 24 horas.</p>
+        </header>
+
+        <div class="contact-grid">
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" required minlength="2" autocomplete="name" />
+              <span class="field-error" data-for="name"></span>
+            </div>
+            <div class="field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+              <span class="field-error" data-for="email"></span>
+            </div>
+            <div class="field">
+              <label for="game">Juego de interés</label>
+              <select id="game" name="game" required>
+                <option value="">Selecciona…</option>
+                <option>League of Legends</option>
+                <option>Valorant</option>
+                <option>CS2</option>
+                <option>Dota 2</option>
+                <option>Otro</option>
+              </select>
+              <span class="field-error" data-for="game"></span>
+            </div>
+            <div class="field">
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message" rows="4" required minlength="10"></textarea>
+              <span class="field-error" data-for="message"></span>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-pulse">ENVIAR</button>
+            <p class="form-success" id="formSuccess" hidden>¡Gracias! Te contactaremos pronto.</p>
+          </form>
+
+          <aside class="contact-info reveal">
+            <h3>Otros canales</h3>
+            <ul>
+              <li><strong>Email:</strong> hola@esportsacademy.gg</li>
+              <li><strong>Discord:</strong> discord.gg/esports-academy</li>
+              <li><strong>Instagram:</strong> @esports.academy</li>
+              <li><strong>Twitch:</strong> twitch.tv/esports_academy</li>
+            </ul>
+            <p class="muted">Respondemos de lunes a sábado, 9am – 8pm.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =================== 5.14 FOOTER =================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="footer-logo">⚡ E-SPORTS <em>ACADEMY</em></p>
+        <p class="footer-slogan">Entrena. Compite. Domina.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Navegacion del pie">
+        <a href="#inicio">Inicio</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#roles">Roles</a>
+        <a href="#instructores">Instructores</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="footer-social" aria-label="Redes sociales">
+        <a href="#" aria-label="Twitch"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3l-1 4v12h4v3h3l3-3h4l5-5V3H4Zm17 9-3 3h-4l-3 3v-3H7V5h14v7Z"/><path d="M16 8h2v5h-2zM12 8h2v5h-2z"/></svg></a>
+        <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 3h3l-7.5 8.6L22 21h-6.6l-5-6.5L4.6 21H1.6l8-9.2L1 3h6.7l4.5 6Zm-1.1 16h1.7L7.2 5H5.4l11.5 14Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 5.3A17 17 0 0 0 15 4l-.2.4a14 14 0 0 0-5.6 0L9 4a17 17 0 0 0-4.5 1.3C2 9.6 1.4 13.7 1.7 17.7a17 17 0 0 0 5.2 2.6l.4-1a11 11 0 0 1-2-1l.5-.4a12 12 0 0 0 10.4 0l.5.4a11 11 0 0 1-2 1l.4 1a17 17 0 0 0 5.2-2.6c.4-4.6-.5-8.7-2.8-12.4ZM9 14.7c-.9 0-1.7-.9-1.7-2 0-1.2.8-2 1.7-2s1.7.8 1.7 2-.8 2-1.7 2Zm6 0c-.9 0-1.7-.9-1.7-2 0-1.2.8-2 1.7-2s1.7.8 1.7 2-.8 2-1.7 2Z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 E-Sports Academy. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- =================== 5.13 CHATBOT =================== -->
+  <button class="chat-fab" id="chatFab" aria-label="Abrir chatbot" aria-expanded="false" aria-controls="chatPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8l-4 4V7a2 2 0 0 1 1-2Z"/>
+      <circle cx="9" cy="11" r="1" fill="currentColor"/>
+      <circle cx="12" cy="11" r="1" fill="currentColor"/>
+      <circle cx="15" cy="11" r="1" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <aside class="chat-panel" id="chatPanel" aria-hidden="true" aria-labelledby="chatTitle">
+    <header class="chat-head">
+      <div>
+        <h3 id="chatTitle">Asistente E-Sports</h3>
+        <p class="chat-status" id="chatStatus">en línea</p>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Cerrar chatbot">×</button>
+    </header>
+    <div class="chat-body" id="chatBody" role="log" aria-live="polite"></div>
+    <form class="chat-form" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Escribe tu pregunta…" autocomplete="off" maxlength="500" aria-label="Mensaje" />
+      <button type="submit" aria-label="Enviar mensaje">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11 21 3l-8 18-2-7-8-3Z"/></svg>
+      </button>
+    </form>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/chatbot.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+</body>
+</html>

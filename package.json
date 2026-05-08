@@ -1,0 +1,26 @@
+{
+  "name": "esports-academy-landing",
+  "version": "1.0.0",
+  "description": "Landing page educativa de E-Sports Academy con backend Express minimal que actua como proxy seguro hacia Google Gemini.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "esports",
+    "landing-page",
+    "gemini",
+    "vanilla-js"
+  ],
+  "author": "E-Sports Academy",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}
