@@ -237,7 +237,9 @@ app.post('/api/chat', async (req, res) => {
 });
 
 // ----- Archivos estáticos (landing) -----
-app.use(express.static(__dirname, {
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+app.use(express.static(PUBLIC_DIR, {
   extensions: ['html'],
   setHeaders(res, filePath) {
     if (filePath.endsWith('.html')) {
@@ -248,7 +250,7 @@ app.use(express.static(__dirname, {
 
 // ----- Fallback: cualquier GET no resuelto sirve index.html -----
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
 // ----- Arranque -----
