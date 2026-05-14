@@ -17,8 +17,10 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
-const PLACEHOLDER_KEY = 'AIzaSyCFGmqGllY7sx9uSq5ohLemL71X1eThqPc';
+/** Por defecto use un alias estable; gemini-2.5-flash / 1.5-* pueden dar 404 según cuenta */
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-flash-latest';
+const GEMINI_FALLBACK_MODELS = ['gemini-flash-latest', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+const PLACEHOLDER_KEY = 'REEMPLAZA_CON_TU_KEY';
 
 const SYSTEM_PROMPT = `Eres el asistente virtual de E-Sports Academy.
 Ayudas a los usuarios a encontrar el curso ideal,
@@ -86,43 +88,105 @@ app.post('/api/chat', async (req, res) => {
       parts: [{ text: m.content }],
     }));
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent?key=${encodeURIComponent(process.env.GEMINI_API_KEY)}`;
+  if (contents.length === 0) {
+    return res.status(400).json({
+      error: 'Mensajes vacíos',
+      hint: 'No se pudo construir el historial. Escribe un mensaje e inténtalo de nuevo.',
+    });
+  }
+
+  const apiKey = process.env.GEMINI_API_KEY.trim();
+  const payload = {
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents,
+    generationConfig: {
+      temperature: 0.7,
+      topP: 0.9,
+      maxOutputTokens: 512,
+    },
+    safetySettings: [
+      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
+      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
+    ],
+  };
+
+  /** Orden: modelo del .env primero, luego fallbacks sin duplicar */
+  const modelsToTry = [...new Set([GEMINI_MODEL, ...GEMINI_FALLBACK_MODELS])];
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 30000);
 
+  function parseGeminiErrorText(text) {
+    try {
+      const j = JSON.parse(text);
+      return j?.error?.message || j?.message || null;
+    } catch {
+      return null;
+    }
+  }
+
   try {
-    const upstream = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      signal: controller.signal,
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents,
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.9,
-          maxOutputTokens: 512,
+    let upstream = null;
+    let lastErrText = '';
+    let usedModel = '';
+
+    for (const model of modelsToTry) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+      usedModel = model;
+      upstream = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-goog-api-key': apiKey,
         },
-        safetySettings: [
-          { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-        ],
-      }),
-    });
+        signal: controller.signal,
+        body: JSON.stringify(payload),
+      });
+
+      if (upstream.ok) break;
+
+      lastErrText = await upstream.text().catch(() => '');
+      const msg = parseGeminiErrorText(lastErrText);
+      console.error('[Gemini]', model, upstream.status, msg || lastErrText.slice(0, 500));
+
+      if (upstream.status === 404) {
+        continue;
+      }
+
+      clearTimeout(timeout);
+      const hint =
+        msg ||
+        (upstream.status === 403
+          ? 'Clave API inválida o sin permiso. Revisa GEMINI_API_KEY en .env y crea una nueva en Google AI Studio si hace falta.'
+          : upstream.status === 429
+            ? 'Cuota excedida o demasiadas peticiones. Espera un momento e inténtalo de nuevo.'
+            : 'Revisa la consola del servidor (terminal) para más detalle.');
+
+      return res.status(502).json({
+        error: 'Error al consultar Gemini',
+        hint: `(${upstream.status}) ${hint}`,
+      });
+    }
 
     clearTimeout(timeout);
 
-    if (!upstream.ok) {
-      const errBody = await upstream.text().catch(() => '');
-      console.error('[Gemini] error', upstream.status, errBody);
+    if (!upstream || !upstream.ok) {
+      const hint = parseGeminiErrorText(lastErrText) || 'Ninguno de los modelos probados está disponible para tu cuenta.';
       return res.status(502).json({
         error: 'Error al consultar Gemini',
-        status: upstream.status,
+        hint: `Modelo probado: ${usedModel}. ${hint} Prueba GEMINI_MODEL=gemini-flash-latest en .env`,
       });
     }
 
     const data = await upstream.json();
+    const blockReason = data?.promptFeedback?.blockReason;
+    if (blockReason) {
+      return res.status(502).json({
+        error: 'Respuesta bloqueada',
+        hint: `Gemini bloqueó la respuesta (${blockReason}). Prueba reformular la pregunta.`,
+      });
+    }
+
     const reply = data?.candidates?.[0]?.content?.parts?.map(p => p.text).join('') ||
       'Lo siento, no pude generar una respuesta. Intenta de nuevo.';
 
