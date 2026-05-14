@@ -31,7 +31,7 @@
         welcomeShown = true;
         appendBubble(
           'bot',
-          'Hola, soy el asistente de E-Sports Academy. Pregúntame por cursos, roles, torneos o inscripciones.'
+          'Hello / Hola — I am the E-Sports Academy assistant. Ask about courses, roles, tournaments, or sign-up. I reply in the same language you use (English or Spanish).'
         );
       }
     }
@@ -41,6 +41,83 @@
     const div = document.createElement('div');
     div.className = 'chat-msg chat-msg--' + role + (extraClass ? ' ' + extraClass : '');
     div.textContent = text;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  /**
+   * Convierte un subconjunto seguro de Markdown a HTML (respuestas del modelo).
+   */
+  function formatAssistantReply(raw) {
+    let s = escapeHtml(raw).trim();
+    s = s.replace(/^```[\w]*\r?\n?/gm, '').replace(/\r?\n?```$/gm, '');
+
+    s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, function (_, label, url) {
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+    });
+
+    let depth = 0;
+    while (depth < 20 && /\*\*(.+?)\*\*/.test(s)) {
+      s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      depth++;
+    }
+    s = s.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+    const lines = s.split(/\r?\n/);
+    const chunks = [];
+    let listMode = null;
+
+    function flushList() {
+      if (listMode) {
+        chunks.push(listMode === 'ol' ? '</ol>' : '</ul>');
+        listMode = null;
+      }
+    }
+
+    for (const line of lines) {
+      const ol = line.match(/^\s*(\d+)[.)]\s+(.+)$/);
+      const ul = line.match(/^\s*[\*\-•]\s+(.+)$/);
+      if (ol) {
+        if (listMode !== 'ol') {
+          flushList();
+          chunks.push('<ol>');
+          listMode = 'ol';
+        }
+        chunks.push('<li>' + ol[2] + '</li>');
+      } else if (ul) {
+        if (listMode !== 'ul') {
+          flushList();
+          chunks.push('<ul>');
+          listMode = 'ul';
+        }
+        chunks.push('<li>' + ul[1] + '</li>');
+      } else {
+        flushList();
+        const t = line.trim();
+        if (t) chunks.push('<p>' + t + '</p>');
+      }
+    }
+    flushList();
+
+    return chunks.length ? chunks.join('') : '<p>' + s + '</p>';
+  }
+
+  function appendBotRich(text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg chat-msg--bot';
+    const inner = document.createElement('div');
+    inner.className = 'chat-msg__content';
+    inner.innerHTML = formatAssistantReply(text);
+    div.appendChild(inner);
     body.appendChild(div);
     body.scrollTop = body.scrollHeight;
   }
@@ -85,7 +162,7 @@
       }
 
       const reply = data.reply || 'Sin respuesta.';
-      appendBubble('bot', reply);
+      appendBotRich(reply);
       history.push({ role: 'assistant', content: reply });
     } catch {
       setTyping(false);

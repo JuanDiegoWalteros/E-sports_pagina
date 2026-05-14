@@ -1268,6 +1268,51 @@ section[id] {
   color: var(--text-gray);
 }
 
+.chat-msg__content {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.chat-msg__content p {
+  margin: 0 0 0.5rem;
+  color: var(--text-light);
+}
+
+.chat-msg__content p:last-child {
+  margin-bottom: 0;
+}
+
+.chat-msg__content strong {
+  color: var(--accent-green-glow);
+  font-weight: 700;
+}
+
+.chat-msg__content ul,
+.chat-msg__content ol {
+  margin: 0.35rem 0 0.65rem 1.1rem;
+  padding: 0;
+  color: var(--text-light);
+}
+
+.chat-msg__content li {
+  margin-bottom: 0.25rem;
+}
+
+.chat-msg__content li::marker {
+  color: var(--accent-green);
+}
+
+.chat-msg__content a {
+  color: var(--accent-green-glow);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-msg__content a:hover {
+  color: var(--accent-green);
+}
+
 .chat-msg--typing {
   font-style: italic;
   opacity: 0.8;
